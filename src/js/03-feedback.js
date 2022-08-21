@@ -34,7 +34,7 @@ function onFormSubmit(e) {
   // ресет form inputs
   e.currentTarget.reset();
   // check value show obj
-  console.log("Вот что мне удалось собрать от юзера", accData)
+  console.log("Вот что мне удалось собрать от User:", accData)
   //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
   console.log("Локас стораЖ был очищен")
@@ -49,7 +49,7 @@ function onInputChange(e) {
 
 function onTextareaChange(e) {
   let userMassage = e.target.value;
-  console.log(userMassage)
+  // console.log(userMassage)
   accData.message = userMassage;
   toLocalStorageSave()
 }
@@ -58,7 +58,7 @@ console.log(accData)
 
 function toLocalStorageSave(){
   const toStrData = JSON.stringify(accData);
-  console.log(toStrData);
+  // console.log(toStrData);
   localStorage.setItem(KEY_LOCSTOR, toStrData)
 }
 
@@ -68,7 +68,7 @@ function cleanLocalStorage(){
 
 function autocompleteForm(){
   const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
-  console.log("From localStorageSavedData :", localStorageSavedData)
+  console.log("From localStorageSavedData check value:", localStorageSavedData)
 
   if(localStorageSavedData){
     console.log("In localStr !Null работаем дальше...", localStorageSavedData)
