@@ -29,8 +29,8 @@ autocompleteForm();
 
 function onFormSubmit(e) {
   e.preventDefault();
-  
-  console.log("Форма успешно отправленна!")
+  if(refs.emailInput.value && refs.textarea.value){
+    console.log("Форма успешно отправленна!")
   // ресет form inputs
   e.currentTarget.reset();
   // check value show obj
@@ -38,6 +38,9 @@ function onFormSubmit(e) {
   //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
   console.log("localStorage был очищен")
+  }
+  
+  alert("Друже заполни все поля!");
 }
 
 function onInputChange(e) {
