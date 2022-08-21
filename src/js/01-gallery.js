@@ -2,9 +2,8 @@
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
-// Change code below this line
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
@@ -31,7 +30,7 @@ function renderFullTamplate() {
 
 renderFullTamplate();
 
-galleryContainerRef.addEventListener('click', onImgClick)
+galleryContainerRef.addEventListener('click', onGalleryImgClick)
 
 
 let gallery = new SimpleLightbox ('.gallery a',{ 
@@ -40,19 +39,15 @@ let gallery = new SimpleLightbox ('.gallery a',{
   captionDelay: 250 
 });
 
-function onImgClick(e){
+function onGalleryImgClick(e){
   // отменяем дефолтное поведение ссылок
   e.preventDefault();
   //  фильтр цели делигации
   if (e.target.nodeName !== "IMG"){
     return
   }
-  // console.log(e.target)
-
-  //   // получаем ссылку большого размера для отображения в галерее
-  // let originalImgUrl = e.target.dataset.source;
 
 gallery.on('show.simplelightbox', function () {
-	// Do something…
+
 });
 }
