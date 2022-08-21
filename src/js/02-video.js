@@ -14,3 +14,4 @@ function onTimeUpdate(params){
   localStorage.setItem(KEY_LOCALSTORAGE, params.seconds);
   // console.log(params)
 }
+

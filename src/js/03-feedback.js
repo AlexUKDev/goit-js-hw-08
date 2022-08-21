@@ -25,14 +25,17 @@ refs.emailInput.addEventListener("input", throttle(onInputChange, 500));
 refs.textarea.addEventListener("input", throttle(onTextareaChange, 500));
 
 // console.log(localStorage);
-
+autocompleteForm();
 
 function onFormSubmit(e) {
   e.preventDefault();
   
   console.log("Форма успешно отправленна!")
+  // ресет form inputs
   e.currentTarget.reset();
+  // check value show obj
   console.log("Вот что мне удалось собрать от юзера", accData)
+  //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
   console.log("Локас стораЖ был очищен")
 }
@@ -53,7 +56,6 @@ function onTextareaChange(e) {
 
 console.log(accData)
 
-
 function toLocalStorageSave(){
   const toStrData = JSON.stringify(accData);
   console.log(toStrData);
@@ -62,4 +64,19 @@ function toLocalStorageSave(){
 
 function cleanLocalStorage(){
   localStorage.removeItem(KEY_LOCSTOR);
+}
+
+function autocompleteForm(){
+  const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
+  console.log("From localStorageSavedData :", localStorageSavedData)
+
+  if(localStorageSavedData){
+    console.log("In localStr !Null работаем дальше...", localStorageSavedData)
+
+    const savedDataParsed = JSON.parse(localStorageSavedData);
+
+    refs.emailInput.value = savedDataParsed.email;
+    refs.textarea.value =savedDataParsed.message;
+  }
+  
 }
