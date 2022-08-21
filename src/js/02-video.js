@@ -12,5 +12,5 @@ player.on('timeupdate', throttle(onTimeUpdate, 1000));
 
 function onTimeUpdate(params){
   localStorage.setItem(KEY_LOCALSTORAGE, params.seconds);
-  console.log(params)
+  // console.log(params)
 }
