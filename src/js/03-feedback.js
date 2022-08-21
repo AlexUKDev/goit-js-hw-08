@@ -54,7 +54,6 @@ function onTextareaChange(e) {
   toLocalStorageSave()
 }
 
-console.log(accData)
 
 function toLocalStorageSave(){
   const toStrData = JSON.stringify(accData);
