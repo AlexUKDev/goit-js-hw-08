@@ -37,7 +37,7 @@ function onFormSubmit(e) {
   console.log("Вот что мне удалось собрать от User:", accData)
   //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
-  console.log("Локас стораЖ был очищен")
+  console.log("localStorage был очищен")
 }
 
 function onInputChange(e) {
@@ -71,7 +71,7 @@ function autocompleteForm(){
   console.log("From localStorageSavedData check value:", localStorageSavedData)
 
   if(localStorageSavedData){
-    console.log("In localStr !Null работаем дальше...", localStorageSavedData)
+    console.log("In localStorage !Null работаем дальше...", localStorageSavedData)
 
     const savedDataParsed = JSON.parse(localStorageSavedData);
 
