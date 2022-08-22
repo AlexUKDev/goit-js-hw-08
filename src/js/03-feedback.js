@@ -8,7 +8,7 @@ const refs = {
 };
 
 const KEY_LOCSTOR = "feedback-form-state";
-const accData = {};
+const accData = JSON.parse(localStorage.getItem(KEY_LOCSTOR)) || {};
 
 // const formRef = document.querySelector("form.feedback-form");
 // console.log(formRef)
@@ -38,9 +38,11 @@ function onFormSubmit(e) {
   //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
   console.log("localStorage был очищен")
+  } else {
+    alert("Друже заполни все поля!");
   }
   
-  alert("Друже заполни все поля!");
+  
 }
 
 function onInputChange(e) {
@@ -48,6 +50,10 @@ function onInputChange(e) {
   console.log(userEmail)
   accData.email = userEmail;
   toLocalStorageSave()
+
+  const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
+  console.log("From localStorageSavedData check value email:", localStorageSavedData);
+
 }
 
 function onTextareaChange(e) {
@@ -55,6 +61,9 @@ function onTextareaChange(e) {
   // console.log(userMassage)
   accData.message = userMassage;
   toLocalStorageSave()
+
+  const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
+  console.log("From localStorageSavedData check value texarea:", localStorageSavedData);
 }
 
 
@@ -77,8 +86,8 @@ function autocompleteForm(){
 
     const savedDataParsed = JSON.parse(localStorageSavedData);
 
-    refs.emailInput.value = savedDataParsed.email;
-    refs.textarea.value =savedDataParsed.message;
+    refs.emailInput.value = savedDataParsed.email || "";
+    refs.textarea.value =savedDataParsed.message || "";
   }
   
 }
