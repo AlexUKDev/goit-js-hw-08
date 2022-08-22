@@ -8,18 +8,10 @@ const refs = {
 };
 
 const KEY_LOCSTOR = "feedback-form-state";
+// read localStorage data or set default 
 const accData = JSON.parse(localStorage.getItem(KEY_LOCSTOR)) || {};
 
-// const formRef = document.querySelector("form.feedback-form");
-// console.log(formRef)
-// const btnSubRef = document.querySelector("button[type='submit']");
-// console.log(btnSubRef)
-
-// console.log(refs.form)
-// console.log(refs.emailInput)
-// console.log(refs.textarea)
-
-
+// set EventListeners
 refs.form.addEventListener("submit", onFormSubmit);
 refs.emailInput.addEventListener("input", throttle(onInputChange, 500));
 refs.textarea.addEventListener("input", throttle(onTextareaChange, 500));
@@ -31,6 +23,7 @@ function onFormSubmit(e) {
   e.preventDefault();
   if(refs.emailInput.value && refs.textarea.value){
     console.log("Форма успешно отправленна!")
+
   // ресет form inputs
   e.currentTarget.reset();
   // check value show obj
@@ -39,21 +32,19 @@ function onFormSubmit(e) {
   cleanLocalStorage();
   console.log("localStorage был очищен")
   } else {
-    alert("Друже заполни все поля!");
+    alert("Друже не торопись, заполни все поля!");
   }
-  
-  
+   
 }
 
 function onInputChange(e) {
   let userEmail = e.target.value;
-  console.log(userEmail)
   accData.email = userEmail;
+
   toLocalStorageSave()
 
-  const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
-  console.log("From localStorageSavedData check value email:", localStorageSavedData);
-
+  // const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
+  // console.log("From localStorageSavedData check value email:", localStorageSavedData);
 }
 
 function onTextareaChange(e) {
@@ -62,8 +53,8 @@ function onTextareaChange(e) {
   accData.message = userMassage;
   toLocalStorageSave()
 
-  const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
-  console.log("From localStorageSavedData check value texarea:", localStorageSavedData);
+  // const localStorageSavedData = localStorage.getItem(KEY_LOCSTOR);
+  // console.log("From localStorageSavedData check value texarea:", localStorageSavedData);
 }
 
 
@@ -82,8 +73,7 @@ function autocompleteForm(){
   console.log("From localStorageSavedData check value:", localStorageSavedData)
 
   if(localStorageSavedData){
-    console.log("In localStorage !Null работаем дальше...", localStorageSavedData)
-
+    // console.log("In localStorage !Null работаем дальше...", localStorageSavedData)
     const savedDataParsed = JSON.parse(localStorageSavedData);
 
     refs.emailInput.value = savedDataParsed.email || "";
