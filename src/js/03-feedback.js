@@ -9,7 +9,7 @@ const refs = {
 
 const KEY_LOCSTOR = "feedback-form-state";
 // read localStorage data or set default 
-const accData = JSON.parse(localStorage.getItem(KEY_LOCSTOR)) || {};
+let accData = JSON.parse(localStorage.getItem(KEY_LOCSTOR)) || {};
 
 // set EventListeners
 refs.form.addEventListener("submit", onFormSubmit);
@@ -22,7 +22,7 @@ autocompleteForm();
 function onFormSubmit(e) {
   e.preventDefault();
   if(refs.emailInput.value && refs.textarea.value){
-    console.log("Форма успешно отправленна!")
+    // console.log("Форма успешно отправленна!")
 
   // ресет form inputs
   e.currentTarget.reset();
@@ -30,7 +30,8 @@ function onFormSubmit(e) {
   console.log("Вот что мне удалось собрать от User:", accData)
   //очистка локал сторыдж после отправки формы
   cleanLocalStorage();
-  console.log("localStorage был очищен")
+  // console.log("localStorage был очищен")
+    accData = {};
   } else {
     alert("Друже не торопись, заполни все поля!");
   }
